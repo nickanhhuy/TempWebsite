@@ -34,8 +34,8 @@ app = Flask(__name__)
 #         return None
 
 # Welcome route
-@app.route('/')
-def home():
+@app.route("/")
+def hello():
     return "Welcome to the IoT Sensor Management API for city temperatures!"
 
 # # 1. GET /sensors: Returns data from all sensors (temperatures of cities)
