@@ -30,7 +30,6 @@ def get_temperature(lat, lon):
         return response.json()['current_weather']['temperature']
     return None
 
-# ----------------- API ROUTES -----------------
 
 @app.route('/api/sensors', methods=['GET'])
 def get_sensors():
@@ -61,7 +60,6 @@ def add_sensor():
     sensors[new_sensor['sensor_id']] = new_sensor
     return jsonify({"message": "Sensor added successfully", "sensor": new_sensor}), 201
 
-# ----------------- ANGULAR FRONTEND -----------------
 @app.route("/", defaults={"path": ""})
 @app.route("/<path:path>")
 def serve_angular(path):
@@ -71,7 +69,6 @@ def serve_angular(path):
     else:
         return send_from_directory(app.static_folder, "index.html")
 
-# ----------------- RUN APP -----------------
 if __name__ == '__main__':
     app.run(debug=True)
 
