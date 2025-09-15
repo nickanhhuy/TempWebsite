@@ -1,0 +1,14 @@
+<div class="dashboard-container">
+  <h2>🌡️ IoT Sensor Dashboard</h2>
+
+  <button class="load-btn" (click)="loadSensors()">Load Sensors</button>
+
+  <div class="cards-container">
+    <div class="card" *ngFor="let sensor of sensors">
+      <h3>{{ sensor.location }}</h3>
+      <p><strong>Type:</strong> {{ sensor.type }}</p>
+      <p><strong>Temperature:</strong> {{ sensor.value }} °C</p>
+      <small>Sensor ID: {{ sensor.sensor_id }}</small>
+    </div>
+  </div>
+</div>
