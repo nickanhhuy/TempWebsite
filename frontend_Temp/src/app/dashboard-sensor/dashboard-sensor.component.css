@@ -58,3 +58,8 @@ h2 {
   color: #999;
   font-size: 12px;
 }
+
+.label {
+  font-weight: 600;
+  color: #333;
+}
