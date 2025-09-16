@@ -24,4 +24,7 @@ export class SensorService {
   addSensor(sensor: any): Observable<any> {
     return this.http.post(this.apiUrl, sensor);
   }
+  searchCity(city: string): Observable<any> {
+    return this.http.get(`/api/search?city=${city}`);
+  }
 }

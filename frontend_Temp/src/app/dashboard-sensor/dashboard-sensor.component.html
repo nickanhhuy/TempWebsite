@@ -1,13 +1,18 @@
 <div class="dashboard-container">
   <h2>IoT Sensor Dashboard</h2>
-
+  <div class="search-bar">
+    <input type="text" [(ngModel)]="searchBar" placeholder="Enter your city" />
+    <button (click)="searchCity()">Search</button>
+  </div>
   <button class="load-btn" (click)="loadSensors()">Load Sensors</button>
 
   <div class="cards-container">
-    <div class="card" *ngFor="let sensor of sensors">
+    <div class="card" *ngFor="let sensor of sensors || []">
       <h3>{{ sensor.location }}</h3>
       <p><span class="label">Type:</span> {{ sensor.type }}</p>
       <p><span class="label">Temperature:</span> {{ sensor.value }} °C</p>
+      <p><span class="label">Latitude:</span> {{ sensor.latitude }}</p>
+      <p><span class="label">Longitude:</span> {{ sensor.longitude }}</p>
       <small>Sensor ID: {{ sensor.sensor_id }}</small>
     </div>
   </div>

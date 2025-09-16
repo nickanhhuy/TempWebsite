@@ -62,34 +62,36 @@ def add_sensor():
     return jsonify({"message": "Sensor added successfully", "sensor": new_sensor}), 201
 
 # search city name
-@app.route('/api/search', methods=['GET'])
+@app.route('/api/search')
 def search_city():
-    city = request.args.get('name')
+    city = request.args.get('city')
     if not city:
         return jsonify({"error": "City name is required"}), 400
-    params = {'name': city, 'count': 1}
-    response = requests.get(GEOCODE_URL, params=params)
-    if response.status_code == 200:
-        geo_json = response.json()
-        if geo_json.get("results"):
-            geo_data = geo_json["results"][0]
-            lat = geo_data["latitude"]
-            lon = geo_data["longitude"]
+    
+    # Geocode city
+    geo_resp = requests.get(f"{GEOCODE_URL}?name={city}")
+    geo_data = geo_resp.json()
+    if not geo_data.get("results"):
+        return jsonify({"error": "City not found"}), 404
+    
+    lat = geo_data["results"][0]["latitude"]
+    lon = geo_data["results"][0]["longitude"]
 
-            temp = get_temperature(lat, lon)
+    # Get current weather based on geocode
+    weather_resp = requests.get(f"{BASE_URL}?latitude={lat}&longitude={lon}&current_weather=true")
+    weather_data = weather_resp.json()
+    temperature = weather_data["current_weather"]["temperature"]
+    #Return results 
+    result = {
+        "sensor_id": city.lower(),
+        "location": city.title(),
+        "latitude": lat,
+        "longitude": lon,
+        "type": "Temperature",
+        "value": temperature
+    }
+    return jsonify(result)
 
-            result = {
-                "city": geo_data["name"],
-                "country": geo_data.get("country", "Unknown"),
-                "latitude": lat,
-                "longitude": lon,
-                "temperature": temp
-            }
-            return jsonify(result)
-        else:
-            return jsonify({"error": "City not found"}), 404
-    else:
-        return jsonify({"error": "Failed to fetch city data"}), response.status_code
 
 @app.route("/", defaults={"path": ""})
 @app.route("/<path:path>")
