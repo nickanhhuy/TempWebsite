@@ -7,9 +7,9 @@ import os
 app = Flask(__name__, static_folder="../frontend_Temp/dist/frontend-temp/browser", static_url_path="")
 CORS(app, origins=[
     "http://localhost:4200",  # Local development
-    "https://*.azurestaticapps.net",  # Azure Static Web Apps
-    "https://temperature-api-fpbraua4ckb7gmhu.canadacentral-01.azurewebsites.net",  # Your backend URL
-    "https://agreeable-mushroom-075af2e10.6.azurestaticapps.net"  # Your new frontend
+    "https://*.azurestaticapps.net",  # Azure Static Web Apps (wildcard)
+    "https://agreeable-mushroom-075af2e10.6.azurestaticapps.net",  # Your specific frontend
+    "https://temperature-api-fpbraua4ckb7gmhu.canadacentral-01.azurewebsites.net"  # Your backend URL
 ])
 
 # Sensor dictionary
@@ -96,6 +96,15 @@ def search_city():
         "value": temperature
     }
     return jsonify(result)
+
+# Test route to check if Flask is working
+@app.route('/')
+def home():
+    return jsonify({"message": "Temperature API is running!", "status": "OK"})
+
+@app.route('/health')
+def health():
+    return jsonify({"status": "healthy", "service": "temperature-api"})
 
 
 if __name__ == '__main__':
