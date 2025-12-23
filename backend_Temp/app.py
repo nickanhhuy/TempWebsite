@@ -81,7 +81,7 @@ def search_city():
     
     lat = geo_data["results"][0]["latitude"]
     lon = geo_data["results"][0]["longitude"]
-
+#f
     # Get current weather based on geocode
     weather_resp = requests.get(f"{BASE_URL}?latitude={lat}&longitude={lon}&current_weather=true")
     weather_data = weather_resp.json()
