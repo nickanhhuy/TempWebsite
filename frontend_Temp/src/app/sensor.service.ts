@@ -6,25 +6,26 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class SensorService {
-  private apiUrl = '/api/sensors';
+  // Replace with your actual Azure API URL after backend deployment
+  private apiUrl = 'https://your-temperature-api.azurewebsites.net/api';
   http: HttpClient;
   constructor(http: HttpClient) {
     this.http = http;
   }
 
   getSensors(): Observable<any> {
-    return this.http.get(this.apiUrl);
+    return this.http.get(`${this.apiUrl}/sensors`);
   }
   getSensorById(sensor_id: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/${sensor_id}`);
+    return this.http.get(`${this.apiUrl}/sensors/${sensor_id}`);
   }
   getSensorType(sensor_type: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/type/${sensor_type}`);
+    return this.http.get(`${this.apiUrl}/sensors/type/${sensor_type}`);
   }
   addSensor(sensor: any): Observable<any> {
-    return this.http.post(this.apiUrl, sensor);
+    return this.http.post(`${this.apiUrl}/sensors`, sensor);
   }
   searchCity(city: string): Observable<any> {
-    return this.http.get(`/api/search?city=${city}`);
+    return this.http.get(`${this.apiUrl}/search?city=${city}`);
   }
 }
