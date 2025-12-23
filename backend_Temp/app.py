@@ -5,7 +5,11 @@ import os
 
 # Flask points to Angular dist
 app = Flask(__name__, static_folder="../frontend_Temp/dist/frontend-temp/browser", static_url_path="")
-CORS(app)
+CORS(app, origins=[
+    "http://localhost:4200",  # Local development
+    "https://*.azurestaticapps.net",  # Azure Static Web Apps
+    "https://temperature-api-fpbraua4ckb7gmhu.canadacentral-01.azurewebsites.net"  # Your backend URL
+])
 
 # Sensor dictionary
 sensors = {
@@ -92,15 +96,6 @@ def search_city():
     }
     return jsonify(result)
 
-
-@app.route("/", defaults={"path": ""})
-@app.route("/<path:path>")
-def serve_angular(path):
-    full_path = os.path.join(app.static_folder, path)
-    if path != "" and os.path.exists(full_path):
-        return send_from_directory(app.static_folder, path)
-    else:
-        return send_from_directory(app.static_folder, "index.html")
 
 if __name__ == '__main__':
     import os
