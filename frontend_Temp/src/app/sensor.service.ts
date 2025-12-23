@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class SensorService {
-  // Replace with your actual Azure API URL
-  private apiUrl = 'https://tempwebsite-e6ewc4hwbtaccbgb.azurewebsites.net/api';
+  // Your Azure API URL
+  private apiUrl = 'https://temperature-api-fpbraua4ckb7gmhu.canadacentral-01.azurewebsites.net/api';
   http: HttpClient;
   constructor(http: HttpClient) {
     this.http = http;

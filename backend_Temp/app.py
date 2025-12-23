@@ -8,7 +8,8 @@ app = Flask(__name__, static_folder="../frontend_Temp/dist/frontend-temp/browser
 CORS(app, origins=[
     "http://localhost:4200",  # Local development
     "https://*.azurestaticapps.net",  # Azure Static Web Apps
-    "https://temperature-api-fpbraua4ckb7gmhu.canadacentral-01.azurewebsites.net"  # Your backend URL
+    "https://temperature-api-fpbraua4ckb7gmhu.canadacentral-01.azurewebsites.net",  # Your backend URL
+    "https://agreeable-mushroom-075af2e10.6.azurestaticapps.net"  # Your new frontend
 ])
 
 # Sensor dictionary

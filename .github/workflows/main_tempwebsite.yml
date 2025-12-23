@@ -1,10 +1,12 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-name: Build and deploy Python app to Azure Web App - tempWebsite
+name: Build and deploy Python app to Azure Web App
 
 on:
   push:
     branches:
       - main
+    paths:
+      - 'backend_Temp/**'
   workflow_dispatch:
 
 jobs:
@@ -15,18 +17,18 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Set up Python version
-        uses: actions/setup-python@v1
+        uses: actions/setup-python@v4
         with:
           python-version: '3.11'
 
       - name: Create and start virtual environment
         run: |
-          cd backend_Temp
           python -m venv venv
           source venv/bin/activate
       
       - name: Install dependencies
         run: |
+          source venv/bin/activate
           cd backend_Temp
           pip install -r requirements.txt
         
@@ -58,7 +60,7 @@ jobs:
         uses: azure/webapps-deploy@v2
         id: deploy-to-webapp
         with:
-          app-name: 'tempWebsite'
+          app-name: 'temperature-api'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_XXXXX }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
           package: release.zip
