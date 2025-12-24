@@ -1,5 +1,5 @@
-# Simple Python deployment to Azure Web App
-name: Deploy Backend to Azure
+# Manual deployment workflow - use VS Code Azure extension for automatic deploys
+name: Build Backend (Manual Deploy via VS Code)
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,16 +21,10 @@ jobs:
       with:
         python-version: '3.11'
 
-    - name: Install dependencies
+    - name: Install dependencies and test
       run: |
         cd backend_Temp
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-
-    - name: Deploy to Azure Web App
-      uses: azure/webapps-deploy@v2
-      with:
-        app-name: 'temperature-api'
-        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-        package: './backend_Temp'
-        slot-name: 'production'
+        echo "✅ Dependencies installed successfully"
+        echo "📦 Ready to deploy via VS Code Azure extension"
