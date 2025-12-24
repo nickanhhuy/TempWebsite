@@ -1,0 +1,24 @@
+# Backend build validation (manual trigger only)
+name: Backend Build Check
+
+on:
+  workflow_dispatch:  # Only runs when manually triggered
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        cd backend_Temp
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        echo "Build successful - deploy via VS Code Azure extension"
