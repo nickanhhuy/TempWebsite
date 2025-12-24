@@ -3,11 +3,10 @@ from flask_cors import CORS
 import requests
 import os
 
-# Flask points to Angular dist
-app = Flask(__name__, static_folder="../frontend_Temp/dist/frontend-temp/browser", static_url_path="")
+# Flask app without Angular static files (frontend deployed separately)
+app = Flask(__name__)
 CORS(app, origins=[
     "http://localhost:4200",  # Local development
-    "https://*.azurestaticapps.net",  # Azure Static Web Apps (wildcard)
     "https://agreeable-mushroom-075af2e10.6.azurestaticapps.net",  # Your specific frontend
     "https://temperature-api-fpbraua4ckb7gmhu.canadacentral-01.azurewebsites.net"  # Your backend URL
 ])
@@ -81,12 +80,13 @@ def search_city():
     
     lat = geo_data["results"][0]["latitude"]
     lon = geo_data["results"][0]["longitude"]
-#f
+    
     # Get current weather based on geocode
     weather_resp = requests.get(f"{BASE_URL}?latitude={lat}&longitude={lon}&current_weather=true")
     weather_data = weather_resp.json()
     temperature = weather_data["current_weather"]["temperature"]
-    #Return results 
+    
+    # Return results 
     result = {
         "sensor_id": city.lower(),
         "location": city.title(),
@@ -108,7 +108,6 @@ def health():
 
 
 if __name__ == '__main__':
-    import os
     port = int(os.environ.get('PORT', 8000))
     app.run(host='0.0.0.0', port=port, debug=False)
 
