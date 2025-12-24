@@ -4,10 +4,14 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'frontend_Temp/**'
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
       - main
+    paths:
+      - 'frontend_Temp/**'
 
 jobs:
   build_and_deploy_job:
