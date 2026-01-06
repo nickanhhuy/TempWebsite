@@ -1,22 +1,22 @@
-# 🌡️ Global Temperature Monitoring System
+# Global Temperature Monitoring System
 
 A real-time temperature monitoring application that displays sensor data from cities worldwide on an interactive map. Built with modern web technologies and deployed on Microsoft Azure.
 
-## 🚀 Live Demo
+## Live Demo
 
 - **Frontend**: [https://agreeable-mushroom-075af2e10.6.azurestaticapps.net](https://agreeable-mushroom-075af2e10.6.azurestaticapps.net)
 - **API**: [https://temperature-api-fpbraua4ckb7gmhu.canadacentral-01.azurewebsites.net](https://temperature-api-fpbraua4ckb7gmhu.canadacentral-01.azurewebsites.net)
 
-## ✨ Features
+## Features
 
-- 🗺️ **Interactive Map**: Leaflet.js-powered map showing global temperature sensors
-- 🌡️ **Real-time Data**: Live temperature readings from Open-Meteo weather API
-- 🔍 **City Search**: Dynamic search and add new temperature sensors
-- 📱 **Responsive Design**: Works seamlessly on desktop and mobile devices
-- ⚡ **Fast Performance**: Optimized Angular frontend with efficient API calls
-- 🔄 **Auto-refresh**: Temperature data updates automatically
+- Interactive Map: Leaflet.js-powered map showing global temperature sensors
+- Real-time Data: Live temperature readings from Open-Meteo weather API
+- City Search: Dynamic search and add new temperature sensors
+- Responsive Design: Works seamlessly on desktop and mobile devices
+- Fast Performance: Optimized Angular frontend with efficient API calls
+- Auto-refresh: Temperature data updates automatically
 
-## 🏗️ Architecture
+## Architecture
 
 ### Frontend (Angular)
 - **Framework**: Angular 19
