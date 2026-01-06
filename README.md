@@ -30,7 +30,7 @@ A real-time temperature monitoring application that displays sensor data from ci
 - **Endpoints**: RESTful API for sensor data and city search
 - **Deployment**: Azure App Service (B1 Basic tier)
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 **Frontend:**
 - Angular 19
@@ -50,15 +50,15 @@ A real-time temperature monitoring application that displays sensor data from ci
 - GitHub Actions
 - VS Code Azure Extension
 
-## 📍 Default Sensor Locations
+## Default Sensor Locations
 
-- 🇻🇳 Ho Chi Minh City, Vietnam
-- 🇨🇦 Toronto, Canada  
-- 🇰🇷 Seoul, South Korea
-- 🇺🇸 San Jose, USA
-- 🇯🇵 Tokyo, Japan
+- Ho Chi Minh City, Vietnam
+- Toronto, Canada  
+- Seoul, South Korea
+- San Jose, USA
+- Tokyo, Japan
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - Node.js 18+
@@ -83,7 +83,7 @@ python app.py
 ```
 API available at: `http://localhost:8000`
 
-## 📡 API Endpoints
+## API Endpoints
 
 | Endpoint | Method | Description |
 |----------|--------|-------------|
@@ -94,7 +94,7 @@ API available at: `http://localhost:8000`
 | `/api/search?city={name}` | GET | Search and get temperature for any city |
 | `/health` | GET | Health check endpoint |
 
-## 🔧 Configuration
+## Configuration
 
 ### Environment Variables
 - `PORT`: Server port (default: 8000)
@@ -104,7 +104,7 @@ The API is configured to accept requests from:
 - `http://localhost:4200` (development)
 - Azure Static Web Apps domain (production)
 
-## 🚀 Deployment
+## Deployment
 
 ### Frontend Deployment
 - **Platform**: Azure Static Web Apps
@@ -116,7 +116,7 @@ The API is configured to accept requests from:
 - **Method**: Manual deployment via VS Code Azure extension
 - **Features**: Always-on, custom domains supported
 
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
@@ -124,17 +124,17 @@ The API is configured to accept requests from:
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 📝 License
+## License
 
 This project is open source and available under the [MIT License](LICENSE).
 
-## 👨‍💻 Author
+## Author
 
 **Your Name**
 - GitHub: [@nickanhhuy](https://github.com/nickanhhuy)
 - Project Link: [https://github.com/nickanhhuy/TempWebsite](https://github.com/nickanhhuy/TempWebsite)
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - [Open-Meteo](https://open-meteo.com/) for providing free weather API
 - [Leaflet.js](https://leafletjs.com/) for the interactive mapping library
@@ -143,4 +143,4 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
-⭐ **Star this repository if you found it helpful!**
+Star this repository if you found it helpful!
